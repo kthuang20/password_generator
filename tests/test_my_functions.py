@@ -4,16 +4,20 @@ from unittest.mock import patch
 import source.generate_password as generate_password
 
 
-### test function to obtain valid inputted text
-def test_input_text_valid(monkeypatch):
-    with patch("builtins.input", return_value="valid Input1234"):
-        assert generate_password.input_text() == "Valid Input1234"
+### test function to obtain valid text for generating password
+def test_check_text():
+    result = generate_password.check_text("validInput1234")
+    assert result == True
 
-### test function to obtain valid inputted text
-def test_input_text_short():
-    with patch("builtins.input", side_effect=["short", "stillshort", "valid Input1234"]):
-        assert generate_password.input_text() == "Valid Input1234"
+### test function to obtain invalid text for generating password
+def test_check_invalid_text():
+    result = generate_password.check_text("short")
+    assert result == False
 
+### test function to obtain invalid text for generating password
+def test_check_invalid_text_all_nums():
+    result = generate_password.check_text("12334235409584059")
+    assert result == False
 
 ### test function to replacement of non-valid characters
 def test_replace_nonvalid_char():
@@ -34,7 +38,7 @@ def test_replace_valid_char_two_options():
 
 
 ### test function to generate the password
-def test_gen_passwords():
+def test_gen_password():
     ## test cases:
     test_cases = ["hello world",
                   "Data Science",

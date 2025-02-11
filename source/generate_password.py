@@ -15,13 +15,12 @@ replacement_key = {
 
 
 ### function to ask and store the user input
-def input_text():
-    ## ask and store the text the user wants to be converted
-    text = input("Enter a text with 12+ characters that you want to passwordify: ")
+def check_text(text):
+    ## check if all numbers
+    all_num = text.isdigit()
     ## check that it has text has least 12 characters
-    while len(text) < 12:
-        text = input("Please re-enter text with at least 12 characters: ")
-    return text.title()  # returns text with each word capitalized
+    min_char = len(text) >= 12
+    return not all_num and min_char
 
 
 ### function to replace a character
@@ -40,7 +39,7 @@ def replace_char(char):
 
 
 ### function to convert to text into a password
-def gen_passwords(text):
+def gen_password(text):
     ## convert text into a list of characters
     text_list = list(text)
     ## iterate through each character in the text
