@@ -9,15 +9,18 @@ def test_check_text():
     result = generate_password.check_text("validInput1234")
     assert result == True
 
+
 ### test function to obtain invalid text for generating password
 def test_check_invalid_text():
     result = generate_password.check_text("short")
     assert result == False
 
+
 ### test function to obtain invalid text for generating password
 def test_check_invalid_text_all_nums():
     result = generate_password.check_text("12334235409584059")
     assert result == False
+
 
 ### test function to replacement of non-valid characters
 def test_replace_nonvalid_char():
