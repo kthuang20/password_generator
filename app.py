@@ -26,4 +26,4 @@ if st.session_state["is_valid"]:
     st.session_state["click_button"] = False
 else:
     ## if the text is invalid, have the user keep trying until valid
-    st.write("Please enter a different text with at least 12 characters")
+    st.write("Please enter different in at least 12 characters")
